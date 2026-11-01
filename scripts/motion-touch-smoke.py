@@ -23,7 +23,7 @@ def has(label):
     return any(n.get('content-desc') == label for n in nodes())
 adb('shell', 'pm', 'clear', 'com.spacecheckers')
 adb('shell', 'am', 'start', '-W', '-n', 'com.spacecheckers/.MainActivity')
-tap('New Game'); tap('Two players'); tap('Start playing')
+tap('New Game'); tap('Two players'); tap('Choose Player 1')
 source = 'Row 6, column 1, Player 1 piece'
 target = 'Row 5, column 2, empty'
 start, end = center(source), center(target)

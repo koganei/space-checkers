@@ -9,8 +9,8 @@ The delivered APK is `artifacts/space-checkers-debug.apk`. Its SHA-256 is record
 | Java rules and sound-event tests | 61 passed, no failures or skips | `app/build/test-results/testDebugUnitTest/TEST-*.xml` |
 | Rule combinations | Random games across all 128 combinations, up to 100 turns each | `GameTest.randomizedAllRuleCombinations` |
 | Android lint | No issues found | `artifacts/lint-final.log` and `app/build/reports/lint-results-debug.html` |
-| Android 15 / API 35 | 248 checks passed | `artifacts/test-emulator-5558.log` |
-| Android 8.0 / API 26 | 248 checks passed | `artifacts/test-emulator-5556.log` |
+| Android 15 / API 35 | 268 checks passed | `artifacts/test-emulator-5558.log` |
+| Android 8.0 / API 26 | 268 checks passed | `artifacts/test-emulator-5556.log` |
 | Black-box touch tests at 360dp | Passed | `artifacts/device-smoke.log` |
 | APK signature | Verified | `artifacts/apk-signature.log` |
 | APK permissions | None | `artifacts/apk-permissions.log` |
@@ -56,3 +56,9 @@ Real Android touch injection also passed for an off-board drop, a legal drag thr
 ## Sound verification (v1.4.0)
 
 Five new JVM tests cover ordinary movement, capture + promotion + victory ordering, both teams’ promotions, existing kings, draws, and wins by blocking an opponent. Android checks verify that all four WAV files decode and SoundPool accepts playback, muting cancels current/queued effects, muted playback is suppressed, preferences survive activity relaunch, and toggling does not alter the match. The settings screenshot was visually reviewed. Logs: `artifacts/sounds-build.log`, `artifacts/sounds-android15.log`, `artifacts/sounds-android8.log`. Generated PCM was checked for unclipped peaks and silent endpoints. Physical-device speaker quality has not been auditioned.
+
+## One-tap setup and game-over flow (v1.5.0)
+
+61 unit tests and 268 checks on each of Android 8 and 15 pass. Alien taps advance immediately; player taps begin immediately, including replacing an existing match without the old adventure confirmation. Result checks cover human wins after the animation, computer wins, draws, duplicate-popup prevention, replay preserving opponent/side/rules/colors/sound, Back to home, reopening a finished match, and activity recreation. Screens 18–19 show the new popup. Logs: `artifacts/flow-android15.log`, `artifacts/flow-android8.log`.
+
+The updated 360dp real-touch alien/setup/gameplay check passed: `artifacts/flow-touch.log`.

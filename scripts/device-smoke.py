@@ -32,7 +32,7 @@ def launch():
         if any('Space Checkers.' in n.get('content-desc','') or 'Welcome to Space Checkers.' in n.get('content-desc','') for n in tree().iter('node')):
             if any(n.get('content-desc')=='Continue game' for n in tree().iter('node')):tap('Continue game')
             elif any(n.get('content-desc')=='New Game' for n in tree().iter('node')):
-                tap('New Game');tap('Two players',True);tap('Start playing',True)
+                tap('New Game');tap('Two players',True);tap('Choose Player 1',True)
             return
         time.sleep(.3)
     raise AssertionError('Game screen did not become ready')

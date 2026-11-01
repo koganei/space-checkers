@@ -106,13 +106,12 @@ public class AppInstrumentation extends Instrumentation {
       shot("00-welcome");
       click("New Game");
       click("Two players");
-      click("Choose Player 2");
-      check(a.chosenPlayer == 2 && !a.hasMatch, "choosing side does not start or overwrite a game");
       shot("09-choose-player");
+      check(!a.hasMatch, "browsing player choices preserves saved match");
       click("Back to welcome");
       click("New Game");
       click("Two players");
-      click("Start playing");
+      click("Choose Player 1");
       check(a.localPlayer == 1 && a.hasMatch, "new game starts chosen player at bottom");
       check(a.game.legalTurns().size() == 7, "initial seven legal moves");
       shot("01-game");
@@ -263,7 +262,6 @@ public class AppInstrumentation extends Instrumentation {
       click("New Game");
       click("Two players");
       click("Choose Player 2");
-      click("Start playing");
       check(
           a.localPlayer == 2 && a.game.turn == 1,
           "choosing Player 2 preserves the configured starting turn");
@@ -299,15 +297,9 @@ public class AppInstrumentation extends Instrumentation {
       click("New Game");
       click("Two players");
       click("Choose Player 1");
-      click("Start playing");
-      check(awaitDialog() != null, "replacing an active game requires confirmation");
-      getUiAutomation()
-          .performGlobalAction(
-              android.accessibilityservice.AccessibilityService.GLOBAL_ACTION_BACK);
-      waitForIdleSync();
       check(
-          a.localPlayer == 2 && a.game.board[33] == 1,
-          "cancel preserves saved perspective and game");
+          a.localPlayer == 1 && a.game.moveCount() == 0 && a.page.equals("game"),
+          "single player choice immediately replaces active match without confirmation");
       ui(
           () -> {
             a.localPlayer = 1;
@@ -321,12 +313,18 @@ public class AppInstrumentation extends Instrumentation {
       shot("12-alien-picker");
       for (int level = 1; level < 4; level++) {
         click("Choose " + AlienAI.NAMES[level] + ", " + AlienAI.LEVELS[level]);
-        check(a.chosenAlien == level, "select alien " + level);
+        check(
+            a.chosenAlien == level && a.page.equals("choose"),
+            "alien choice advances immediately " + level);
+        if (level < 3) {
+          click("Back to welcome");
+          click("New Game");
+          click("Play an alien");
+        }
       }
       shot("13-luma-selected");
-      click("Continue with Luma");
+
       click("Choose Player 2");
-      click("Start playing");
       ui(
           () -> {
             check(
@@ -432,7 +430,7 @@ public class AppInstrumentation extends Instrumentation {
           });
       click("New Game");
       click("Two players");
-      click("Start playing");
+      click("Choose Player 1");
       android.os.SystemClock.sleep(800);
       check(
           !a.vsComputer && a.game.moveCount() == 0,
@@ -444,6 +442,7 @@ public class AppInstrumentation extends Instrumentation {
           });
       motionChecks();
       soundChecks();
+      resultChecks();
       results.putString("stream", "\n" + log + "\n" + checks + " checks passed.\n");
       finish(Activity.RESULT_OK, results);
     } catch (Throwable t) {
@@ -451,6 +450,105 @@ public class AppInstrumentation extends Instrumentation {
           "stream", "\n" + log + "\nFAILED: " + t + "\n" + android.util.Log.getStackTraceString(t));
       finish(Activity.RESULT_CANCELED, results);
     }
+  }
+
+  void resultAction(String label) {
+    ui(
+        () -> {
+          check(a.resultDialog != null && a.resultDialog.isShowing(), "result popup visible");
+          View button = find(a.resultDialog.getWindow().getDecorView(), label);
+          check(button != null, "result action: " + label);
+          button.performClick();
+        });
+  }
+
+  void resultChecks() throws IOException {
+    ui(
+        () -> {
+          a.vsComputer = true;
+          a.alien = 2;
+          a.localPlayer = 2;
+          a.color1 = 3;
+          a.color2 = 7;
+          a.soundEnabled = false;
+          a.sounds.setEnabled(false);
+          Game.Rules rules = new Game.Rules();
+          rules.flying = true;
+          rules.first = 2;
+          a.start(rules);
+          Arrays.fill(a.game.board, 0);
+          a.game.board[21] = -1;
+          a.game.board[30] = 1;
+          a.selected = -1;
+          a.refresh();
+          a.tap(21);
+          a.tap(39);
+          check(a.resultDialog == null, "result waits for final animation");
+        });
+    SystemClock.sleep(350);
+    ui(
+        () -> {
+          check(a.game.result == 2 && a.resultDialog != null, "human victory opens result popup");
+          AlertDialog first = a.resultDialog;
+          a.showResult();
+          check(a.resultDialog == first, "result popup is not duplicated");
+        });
+    shot("18-result-win");
+    resultAction("Play again");
+    ui(
+        () ->
+            check(
+                a.game.result == 0
+                    && a.game.moveCount() == 0
+                    && a.vsComputer
+                    && a.alien == 2
+                    && a.localPlayer == 2
+                    && a.game.rules.flying
+                    && a.game.rules.first == 2
+                    && a.color1 == 3
+                    && a.color2 == 7
+                    && !a.soundEnabled,
+                "rematch preserves all match settings and starts immediately"));
+    ui(
+        () -> {
+          a.cancelComputer();
+          a.localPlayer = 1;
+          a.alien = 0;
+          a.game = new Game(new Game.Rules());
+          Arrays.fill(a.game.board, 0);
+          a.game.board[17] = -1;
+          a.game.board[26] = 1;
+          a.game.turn = 2;
+          a.refresh();
+        });
+    waitHuman();
+    ui(() -> check(a.game.result == 2 && a.resultDialog != null, "alien victory opens loss popup"));
+    shot("19-result-loss");
+    resultAction("Back to home");
+    check(a.page.equals("welcome") && a.game.result == 2, "home preserves finished match");
+    ui(
+        () -> {
+          a.page = "game";
+          a.show();
+        });
+    ui(() -> check(a.resultDialog != null, "returning to finished match shows result"));
+    ui(
+        () -> {
+          a.save();
+          a.finish();
+        });
+    launch();
+    ui(() -> check(a.resultDialog != null, "finished match popup survives relaunch"));
+    resultAction("Back to home");
+    ui(
+        () -> {
+          a.vsComputer = false;
+          a.game.result = 3;
+          a.page = "game";
+          a.show();
+        });
+    ui(() -> check(a.resultDialog != null, "draw also offers rematch and home"));
+    resultAction("Back to home");
   }
 
   void soundChecks() throws IOException {

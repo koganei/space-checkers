@@ -4,17 +4,15 @@ PASS control exists: New Game
 PASS control enabled: New Game
 PASS control exists: Two players
 PASS control enabled: Two players
-PASS control exists: Choose Player 2
-PASS control enabled: Choose Player 2
-PASS choosing side does not start or overwrite a game
+PASS browsing player choices preserves saved match
 PASS control exists: Back to welcome
 PASS control enabled: Back to welcome
 PASS control exists: New Game
 PASS control enabled: New Game
 PASS control exists: Two players
 PASS control enabled: Two players
-PASS control exists: Start playing
-PASS control enabled: Start playing
+PASS control exists: Choose Player 1
+PASS control enabled: Choose Player 1
 PASS new game starts chosen player at bottom
 PASS initial seven legal moves
 PASS control exists: Show a legal move hint
@@ -119,8 +117,6 @@ PASS control exists: Two players
 PASS control enabled: Two players
 PASS control exists: Choose Player 2
 PASS control enabled: Choose Player 2
-PASS control exists: Start playing
-PASS control enabled: Start playing
 PASS choosing Player 2 preserves the configured starting turn
 PASS opponent turn is named from the selected perspective
 PASS Player 2 renders at bottom
@@ -151,29 +147,34 @@ PASS control exists: Two players
 PASS control enabled: Two players
 PASS control exists: Choose Player 1
 PASS control enabled: Choose Player 1
-PASS control exists: Start playing
-PASS control enabled: Start playing
-PASS replacing an active game requires confirmation
-PASS cancel preserves saved perspective and game
+PASS single player choice immediately replaces active match without confirmation
 PASS control exists: New Game
 PASS control enabled: New Game
 PASS control exists: Play an alien
 PASS control enabled: Play an alien
 PASS control exists: Choose Bloop, Medium
 PASS control enabled: Choose Bloop, Medium
-PASS select alien 1
+PASS alien choice advances immediately 1
+PASS control exists: Back to welcome
+PASS control enabled: Back to welcome
+PASS control exists: New Game
+PASS control enabled: New Game
+PASS control exists: Play an alien
+PASS control enabled: Play an alien
 PASS control exists: Choose Ziggy, Tricky
 PASS control enabled: Choose Ziggy, Tricky
-PASS select alien 2
+PASS alien choice advances immediately 2
+PASS control exists: Back to welcome
+PASS control enabled: Back to welcome
+PASS control exists: New Game
+PASS control enabled: New Game
+PASS control exists: Play an alien
+PASS control enabled: Play an alien
 PASS control exists: Choose Luma, Hard
 PASS control enabled: Choose Luma, Hard
-PASS select alien 3
-PASS control exists: Continue with Luma
-PASS control enabled: Continue with Luma
+PASS alien choice advances immediately 3
 PASS control exists: Choose Player 2
 PASS control enabled: Choose Player 2
-PASS control exists: Start playing
-PASS control enabled: Start playing
 PASS alien match stores mode, level and side
 PASS human cannot move during computer turn
 PASS alien plays first when human chooses Player 2
@@ -199,8 +200,8 @@ PASS control exists: New Game
 PASS control enabled: New Game
 PASS control exists: Two players
 PASS control enabled: Two players
-PASS control exists: Start playing
-PASS control enabled: Start playing
+PASS control exists: Choose Player 1
+PASS control enabled: Choose Player 1
 PASS two-player mode never schedules a computer move
 PASS four initial movable pieces highlighted
 PASS piece follows drag outside board
@@ -247,6 +248,25 @@ PASS sound can be enabled again
 PASS control exists: Back to game, discard rule edits
 PASS control enabled: Back to game, discard rule edits
 PASS leaving settings retains immediate sound preference
+PASS result waits for final animation
+PASS human victory opens result popup
+PASS result popup is not duplicated
+PASS result popup visible
+PASS result action: Play again
+PASS rematch preserves all match settings and starts immediately
+PASS alien victory opens loss popup
+PASS result popup visible
+PASS result action: Back to home
+PASS home preserves finished match
+PASS returning to finished match shows result
+PASS control exists: Continue game
+PASS control enabled: Continue game
+PASS finished match popup survives relaunch
+PASS result popup visible
+PASS result action: Back to home
+PASS draw also offers rematch and home
+PASS result popup visible
+PASS result action: Back to home
 
-248 checks passed.
+268 checks passed.
 

@@ -28,8 +28,9 @@ try:
     adb('shell','pm','clear','com.spacecheckers');adb('shell','am','start','-W','-n','com.spacecheckers/.MainActivity')
     tap('New Game');tap('Play an alien')
     for name,level in [('Bloop','Medium'),('Ziggy','Tricky'),('Luma','Hard')]:
-        tap('Choose '+name+', '+level);assert 'Choose '+name+', '+level+', selected' in labels()
-    shot('small-aliens');tap('Continue with Luma');tap('Choose Player 2');tap('Start playing');wait_turn()
+        tap('Choose '+name+', '+level);assert 'Choose Player 2' in labels()
+        if name != 'Luma':tap('Back to welcome');tap('New Game');tap('Play an alien')
+    shot('small-player-choice');tap('Choose Player 2');wait_turn()
     assert 'Row 6, column 1, Player 2 piece' in labels()
     assert any(x.startswith('Row 4,') and 'Player 1 piece' in x for x in labels()),'Opening AI move missing'
     shot('small-alien-game');tap('Row 6, column 7, Player 2 piece');tap('Row 5, column 8, empty');wait_turn()

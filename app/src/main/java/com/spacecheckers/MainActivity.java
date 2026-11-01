@@ -45,6 +45,7 @@ public class MainActivity extends Activity {
   Game.Rules draft;
   SpaceArt art;
   GameSounds sounds;
+  AlertDialog resultDialog;
   boolean soundEnabled;
   ScrollView scroll;
   Scene scene;
@@ -166,6 +167,7 @@ public class MainActivity extends Activity {
 
   @Override
   protected void onPause() {
+    dismissResult();
     active = false;
     cancelComputer();
     save();
@@ -209,20 +211,101 @@ public class MainActivity extends Activity {
   }
 
   void playChosen() {
-    Runnable begin =
-        () -> {
-          localPlayer = chosenPlayer;
-          vsComputer = chosenComputer;
-          alien = chosenAlien;
-          start(game.rules);
-        };
-    if (hasMatch && game.result == 0 && game.canUndo())
-      confirm(
-          "Start a new adventure?",
-          "This replaces your saved game. Your colors and rules stay the same.",
-          "Start new game",
-          begin);
-    else begin.run();
+    localPlayer = chosenPlayer;
+    vsComputer = chosenComputer;
+    alien = chosenAlien;
+    start(game.rules);
+  }
+
+  void dismissResult() {
+    if (resultDialog != null) {
+      resultDialog.dismiss();
+      resultDialog = null;
+    }
+  }
+
+  void resultHome() {
+    page = "welcome";
+    show();
+  }
+
+  void showResult() {
+    if (!active
+        || !page.equals("game")
+        || game.result == 0
+        || scene.moving()
+        || isFinishing()
+        || (resultDialog != null && resultDialog.isShowing())) return;
+    String title =
+        game.result == 3
+            ? "A friendly draw!"
+            : !vsComputer
+                ? "Player " + game.result + " wins!"
+                : game.result == localPlayer ? "You win!" : AlienAI.NAMES[alien] + " wins!";
+    String body =
+        game.result == 3
+            ? "A great adventure together. Try another?"
+            : vsComputer && game.result != localPlayer
+                ? "Good try, space explorer! Ready for a rematch?"
+                : "Great playing, space explorer! Ready for another round?";
+    float density = getResources().getDisplayMetrics().density;
+    int pad = Math.round(24 * density);
+    LinearLayout content = new LinearLayout(this);
+    content.setOrientation(LinearLayout.VERTICAL);
+    content.setPadding(pad, pad, pad, pad);
+    TextView heading = new TextView(this);
+    heading.setText(title);
+    heading.setTextSize(28);
+    heading.setTypeface(art.bold);
+    heading.setTextColor(SpaceArt.WHITE);
+    heading.setGravity(Gravity.CENTER);
+    content.addView(heading);
+    TextView detail = new TextView(this);
+    detail.setText(body);
+    detail.setTextSize(18);
+    detail.setTypeface(art.regular);
+    detail.setTextColor(SpaceArt.MUTED);
+    detail.setGravity(Gravity.CENTER);
+    detail.setPadding(0, pad / 2, 0, pad);
+    content.addView(detail);
+    for (int i = 0; i < 2; i++) {
+      boolean primary = i == 0;
+      Button button = new Button(this);
+      button.setText(primary ? "Play again" : "Back to home");
+      button.setContentDescription(primary ? "Play again" : "Back to home");
+      button.setAllCaps(false);
+      button.setTextSize(20);
+      button.setTypeface(art.bold);
+      button.setTextColor(primary ? SpaceArt.BG : SpaceArt.WHITE);
+      button.setSoundEffectsEnabled(false);
+      GradientDrawable background = new GradientDrawable();
+      background.setColor(primary ? SpaceArt.CYAN : 0xff142e50);
+      background.setCornerRadius(28 * density);
+      if (!primary) background.setStroke(Math.round(density), 0xff41678f);
+      button.setBackground(
+          new RippleDrawable(
+              android.content.res.ColorStateList.valueOf(0x33ffffff), background, null));
+      LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(-1, -2);
+      params.topMargin = Math.round(12 * density);
+      button.setMinHeight(Math.round(56 * density));
+      content.addView(button, params);
+      button.setOnClickListener(
+          v -> {
+            if (primary) start(game.rules);
+            else resultHome();
+          });
+    }
+    ScrollView viewport = new ScrollView(this);
+    viewport.addView(content);
+    resultDialog = new AlertDialog.Builder(this).setView(viewport).create();
+    resultDialog.setCanceledOnTouchOutside(false);
+    resultDialog.setOnCancelListener(d -> resultHome());
+    resultDialog.show();
+    GradientDrawable background = new GradientDrawable();
+    background.setColor(0xff142e50);
+    background.setCornerRadius(24 * density);
+    background.setStroke(Math.round(density), 0xff36567e);
+    resultDialog.getWindow().setBackgroundDrawable(background);
   }
 
   int modelCell(int displayed) {
@@ -230,6 +313,7 @@ public class MainActivity extends Activity {
   }
 
   void show() {
+    dismissResult();
     cancelComputer();
     scroll.removeAllViews();
     scene = new Scene();
@@ -411,6 +495,7 @@ public class MainActivity extends Activity {
 
   void undoTurn() {
     if (!canUndoTurn()) return;
+    dismissResult();
     cancelComputer();
     game.undo();
     // Take back the alien reply plus the preceding human turn, or an unfinished human turn.
@@ -432,6 +517,7 @@ public class MainActivity extends Activity {
   }
 
   void maybeStartComputer() {
+    showResult();
     if (!active
         || !page.equals("game")
         || !isComputerTurn()
@@ -599,6 +685,7 @@ public class MainActivity extends Activity {
               motionFrom = -1;
               playLandingSound(before, from, to);
               done.run();
+              showResult();
               drawing.invalidate();
             }
           });
@@ -863,11 +950,7 @@ public class MainActivity extends Activity {
       for (int i = 0; i < 4; i++) {
         final int choice = i;
         add(
-            "Choose "
-                + AlienAI.NAMES[i]
-                + ", "
-                + AlienAI.LEVELS[i]
-                + (chosenAlien == i ? ", selected" : ""),
+            "Choose " + AlienAI.NAMES[i] + ", " + AlienAI.LEVELS[i],
             24,
             125 + i * 119,
             342,
@@ -875,20 +958,10 @@ public class MainActivity extends Activity {
             true,
             () -> {
               chosenAlien = choice;
-              rebuild();
+              page = "choose";
+              show();
             });
       }
-      add(
-          "Continue with " + AlienAI.NAMES[chosenAlien],
-          24,
-          637,
-          342,
-          62,
-          true,
-          () -> {
-            page = "choose";
-            show();
-          });
     }
 
     void chooseHits() {
@@ -906,7 +979,7 @@ public class MainActivity extends Activity {
       for (int player = 1; player <= 2; player++) {
         final int choice = player;
         add(
-            "Choose Player " + player + (chosenPlayer == player ? ", selected" : ""),
+            "Choose Player " + player,
             24 + (player - 1) * 180,
             238,
             162,
@@ -914,10 +987,9 @@ public class MainActivity extends Activity {
             true,
             () -> {
               chosenPlayer = choice;
-              rebuild();
+              playChosen();
             });
       }
-      add("Start playing", 24, 571, 342, 62, true, MainActivity.this::playChosen);
     }
 
     void gameHits() {
@@ -974,19 +1046,7 @@ public class MainActivity extends Activity {
           });
       add("Change piece colors", 282, 630, 72, 94, true, MainActivity.this::openColors);
       if (game.result != 0)
-        add(
-            "Play again",
-            90,
-            527,
-            210,
-            91,
-            true,
-            () ->
-                confirm(
-                    "Another adventure?",
-                    "Start a fresh game with the same rules?",
-                    "Play again",
-                    () -> start(game.rules)));
+        add("Play again", 90, 527, 210, 91, true, MainActivity.this::showResult);
     }
 
     void colorHits() {
@@ -1260,14 +1320,13 @@ public class MainActivity extends Activity {
       for (int i = 0; i < 4; i++) {
         float top = 125 + i * 119;
         art.panel(c, top, top + 104);
-        if (chosenAlien == i) art.stroke(c, 16, top, 374, top + 104, 20, SpaceArt.CYAN, 2.5f);
+
         aliens.draw(c, i, 75, top + 56, 37);
         art.text(c, AlienAI.NAMES[i], 133, top + 34, 25, SpaceArt.WHITE, true, false);
         art.text(c, AlienAI.LEVELS[i], 133, top + 59, 17, AlienArt.COLORS[i], true, false);
         art.text(c, AlienAI.BLURBS[i], 133, top + 84, 14.5f, SpaceArt.MUTED, false, false);
-        if (chosenAlien == i) art.icon(c, "check", 342, top + 32, 18, SpaceArt.CYAN);
       }
-      art.primary(c, "Choose " + AlienAI.NAMES[chosenAlien], 637);
+      art.text(c, "Tap an alien to choose your side.", 195, 660, 18, SpaceArt.WHITE, false, true);
       art.text(c, "Every alien plays by your rules.", 195, 734, 17, SpaceArt.MUTED, false, true);
     }
 
@@ -1278,18 +1337,10 @@ public class MainActivity extends Activity {
       for (int player = 1; player <= 2; player++) {
         float left = 24 + (player - 1) * 180;
         art.round(c, left, 238, left + 162, 445, 20, 0xff142e50);
-        art.stroke(
-            c,
-            left,
-            238,
-            left + 162,
-            445,
-            20,
-            chosenPlayer == player ? SpaceArt.CYAN : 0xff36567e,
-            chosenPlayer == player ? 2.5f : 1);
+        art.stroke(c, left, 238, left + 162, 445, 20, 0xff36567e, 1);
         art.piece(c, left + 81, 310, 46, playerColor(player), player, false);
         art.text(c, "Player " + player, left + 81, 390, 25, SpaceArt.WHITE, true, true);
-        if (chosenPlayer == player) art.icon(c, "check", left + 81, 420, 19, SpaceArt.CYAN);
+        art.text(c, "Tap to play", left + 81, 423, 16, SpaceArt.CYAN, false, true);
       }
       art.text(
           c,
@@ -1300,16 +1351,8 @@ public class MainActivity extends Activity {
           SpaceArt.MUTED,
           false,
           true);
-      art.text(
-          c,
-          "You’ll play as Player " + chosenPlayer + ".",
-          195,
-          535,
-          20,
-          SpaceArt.WHITE,
-          true,
-          true);
-      art.primary(c, "Let’s play", 571);
+      art.text(c, "Tap your player to start.", 195, 535, 20, SpaceArt.WHITE, true, true);
+
       art.text(
           c,
           chosenComputer

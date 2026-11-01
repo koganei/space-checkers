@@ -18,7 +18,7 @@ No account, network connection, ads, analytics, or Android permissions are requi
 
 ## Play
 
-The welcome screen offers **New Game** and, when available, **Continue game**. New Game first offers **Play an alien** or **Two players**. In alien mode, choose Pip, Bloop, Ziggy, or Luma. Then choose whether you want to play as Player 1 or Player 2. Your selected side starts at the bottom and moves upward on screen; the view stays fixed throughout the match. Player 1 still moves first by default, independently of your chosen side. The starting-player rule can change this. Choosing a side does not replace your saved game until you start and confirm. Tap a piece, then a glowing destination. A star identifies Player 1 and a ring identifies Player 2. Kings have a crown and gold rim. The symbols remain meaningful after colors change.
+The welcome screen offers **New Game** and, when available, **Continue game**. New Game first offers **Play an alien** or **Two players**. In alien mode, choose Pip, Bloop, Ziggy, or Luma. Then choose whether you want to play as Player 1 or Player 2. Your selected side starts at the bottom and moves upward on screen; the view stays fixed throughout the match. Player 1 still moves first by default, independently of your chosen side. The starting-player rule can change this. Tap an alien to advance, then tap a player to start immediately. Browsing choices preserves the saved match; choosing the player replaces it without another confirmation. Tap a piece, then a glowing destination. A star identifies Player 1 and a ring identifies Player 2. Kings have a crown and gold rim. The symbols remain meaningful after colors change.
 
 - **Undo** in two-player mode restores a whole turn, including all captures. In alien mode it takes back your last decision and the alien’s reply. You can also undo your move while the alien is thinking. The alien’s initial opening move alone cannot be undone. During a jump chain, it restores the position before the chain. Up to 512 turns are retained.
 - **Hint** suggests a legal move, prioritizing captures and promotion. It is a teaching aid, not a competitive chess-engine-style search.
@@ -119,3 +119,5 @@ Pieces with legal moves have a soft cyan outline. Tap a piece and then a glowing
 ### Sound effects
 
 Moves, captures, new kings and wins have short space chimes. Open the gear button and switch **Sound effects** off to mute them. The preference applies immediately, survives relaunch, and does not reset a match. Sounds follow the device's media volume and stop when the app leaves play. All four original sound files are bundled for offline use; regenerate with `python3 scripts/generate-sounds.py`.
+
+At the end of a match, **Play again** starts immediately with the same opponent, side and settings. **Back to home** returns to the welcome screen. Wins, losses and draws all offer these actions.
