@@ -1,0 +1,9 @@
+.gradle/
+**/build/
+local.properties
+*.jks
+*.keystore
+
+# Installers belong in GitHub Releases.
+*.apk
+*.aab

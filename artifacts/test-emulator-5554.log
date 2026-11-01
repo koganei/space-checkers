@@ -1,0 +1,95 @@
+
+PASS initial seven legal moves
+PASS control exists: Show a legal move hint
+PASS control enabled: Show a legal move hint
+PASS hint selects a legal source and destination
+PASS move changes active player
+PASS control exists: Undo last turn
+PASS control enabled: Undo last turn
+PASS undo restores full initial turn
+PASS control exists: Change piece colors
+PASS control enabled: Change piece colors
+PASS colors screen opens
+PASS control exists: Player 1 color Pink
+PASS control enabled: Player 1 color Pink
+PASS player 1 color updates
+PASS control exists: Player 2 color Orange
+PASS control enabled: Player 2 color Orange
+PASS player 2 color updates
+PASS duplicate opponent color rejected
+PASS control exists: More colors for Player 1
+PASS control enabled: More colors for Player 1
+PASS control exists: Let’s play
+PASS control enabled: Let’s play
+PASS colors preserve game
+PASS control exists: Game rules and settings
+PASS control enabled: Game rules and settings
+PASS standard preset is default
+PASS control exists: Finish every jump chain, on
+PASS control enabled: Finish every jump chain, on
+PASS control exists: Stop when crowned, on
+PASS control enabled: Stop when crowned, on
+PASS control exists: Automatic draws, on
+PASS control enabled: Automatic draws, on
+PASS control exists: Starting player, Player 1
+PASS control enabled: Starting player, Player 1
+PASS remaining rule switches and first player update
+PASS control exists: Use standard American checkers rules
+PASS control enabled: Use standard American checkers rules
+PASS control exists: Use gentle practice rules
+PASS control enabled: Use gentle practice rules
+PASS practice disables forced capture
+PASS rule edits do not affect current game
+PASS control exists: Back to game, discard rule edits
+PASS control enabled: Back to game, discard rule edits
+PASS back discards rule edits
+PASS control exists: Game rules and settings
+PASS control enabled: Game rules and settings
+PASS control exists: Flying kings, off
+PASS control enabled: Flying kings, off
+PASS control exists: Men can jump backward, off
+PASS control enabled: Men can jump backward, off
+PASS control exists: Take the most pieces, off
+PASS control enabled: Take the most pieces, off
+PASS house rule switches update draft
+PASS control exists: Apply rules and start new game
+PASS control enabled: Apply rules and start new game
+PASS new game confirmation shown
+PASS cancel keeps original match
+PASS control exists: Apply rules and start new game
+PASS control enabled: Apply rules and start new game
+PASS confirmation button available
+PASS confirmation applies rules
+PASS new game preserves colors
+PASS control exists: Row 6, column 3, Player 1 piece
+PASS control enabled: Row 6, column 3, Player 1 piece
+PASS control exists: Row 4, column 1, empty
+PASS control enabled: Row 4, column 1, empty
+PASS jump chain holds selection
+PASS unfinished jump survives process-style reload
+PASS control exists: Row 4, column 1, Player 1 piece
+PASS control enabled: Row 4, column 1, Player 1 piece
+PASS control exists: Row 2, column 3, empty
+PASS control enabled: Row 2, column 3, empty
+PASS reloaded chain can finish
+PASS control exists: Undo last turn
+PASS control enabled: Undo last turn
+PASS undo after reload restores entire chain
+PASS control exists: Row 3, column 2, Player 1 piece
+PASS control enabled: Row 3, column 2, Player 1 piece
+PASS control exists: Row 1, column 4, empty
+PASS control enabled: Row 1, column 4, empty
+PASS promotion ends standard turn
+PASS control exists: Row 6, column 3, Player 1 piece
+PASS control enabled: Row 6, column 3, Player 1 piece
+PASS control exists: Row 4, column 1, empty
+PASS control enabled: Row 4, column 1, empty
+PASS winning move displays result
+PASS control exists: Undo last turn
+PASS control enabled: Undo last turn
+PASS undo leaves finished state
+PASS board and turn survive reload
+PASS colors survive reload
+
+91 checks passed.
+

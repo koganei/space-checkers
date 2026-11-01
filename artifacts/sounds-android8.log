@@ -1,0 +1,349 @@
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preDebugBuild UP-TO-DATE
+> Task :app:javaPreCompileDebug UP-TO-DATE
+> Task :app:checkDebugAarMetadata UP-TO-DATE
+> Task :app:generateDebugResValues UP-TO-DATE
+> Task :app:mapDebugSourceSetPaths UP-TO-DATE
+> Task :app:generateDebugResources UP-TO-DATE
+> Task :app:mergeDebugResources UP-TO-DATE
+> Task :app:packageDebugResources UP-TO-DATE
+> Task :app:parseDebugLocalResources UP-TO-DATE
+> Task :app:createDebugCompatibleScreenManifests UP-TO-DATE
+> Task :app:extractDeepLinksDebug UP-TO-DATE
+> Task :app:processDebugMainManifest UP-TO-DATE
+> Task :app:processDebugManifest UP-TO-DATE
+> Task :app:processDebugManifestForPackage UP-TO-DATE
+> Task :app:processDebugResources UP-TO-DATE
+> Task :app:compileDebugJavaWithJavac UP-TO-DATE
+> Task :app:bundleDebugClassesToRuntimeJar UP-TO-DATE
+> Task :app:bundleDebugClassesToCompileJar UP-TO-DATE
+> Task :app:preDebugUnitTestBuild UP-TO-DATE
+> Task :app:javaPreCompileDebugUnitTest UP-TO-DATE
+> Task :app:compileDebugUnitTestJavaWithJavac UP-TO-DATE
+> Task :app:processDebugJavaRes NO-SOURCE
+> Task :app:processDebugUnitTestJavaRes NO-SOURCE
+> Task :app:testDebugUnitTest UP-TO-DATE
+> Task :app:preDebugAndroidTestBuild SKIPPED
+> Task :app:generateDebugAndroidTestResValues UP-TO-DATE
+> Task :app:generateDebugAndroidTestLintModel UP-TO-DATE
+> Task :app:extractProguardFiles UP-TO-DATE
+> Task :app:generateDebugLintReportModel UP-TO-DATE
+> Task :app:generateDebugUnitTestLintModel UP-TO-DATE
+> Task :app:lintAnalyzeDebug UP-TO-DATE
+> Task :app:lintAnalyzeDebugAndroidTest UP-TO-DATE
+> Task :app:lintAnalyzeDebugUnitTest UP-TO-DATE
+> Task :app:lintReportDebug UP-TO-DATE
+> Task :app:lintDebug
+> Task :app:mergeDebugNativeDebugMetadata NO-SOURCE
+> Task :app:mergeDebugShaders UP-TO-DATE
+> Task :app:compileDebugShaders NO-SOURCE
+> Task :app:generateDebugAssets UP-TO-DATE
+> Task :app:mergeDebugAssets UP-TO-DATE
+> Task :app:compressDebugAssets UP-TO-DATE
+> Task :app:desugarDebugFileDependencies UP-TO-DATE
+> Task :app:dexBuilderDebug UP-TO-DATE
+> Task :app:mergeDebugGlobalSynthetics UP-TO-DATE
+> Task :app:mergeDebugJavaResource UP-TO-DATE
+> Task :app:checkDebugDuplicateClasses UP-TO-DATE
+> Task :app:mergeExtDexDebug UP-TO-DATE
+> Task :app:mergeLibDexDebug UP-TO-DATE
+> Task :app:mergeProjectDexDebug UP-TO-DATE
+> Task :app:mergeDebugJniLibFolders UP-TO-DATE
+> Task :app:mergeDebugNativeLibs NO-SOURCE
+> Task :app:stripDebugDebugSymbols NO-SOURCE
+> Task :app:validateSigningDebug UP-TO-DATE
+> Task :app:writeDebugAppMetadata UP-TO-DATE
+> Task :app:writeDebugSigningConfigVersions UP-TO-DATE
+> Task :app:packageDebug UP-TO-DATE
+> Task :app:createDebugApkListingFileRedirect UP-TO-DATE
+> Task :app:assembleDebug UP-TO-DATE
+> Task :app:javaPreCompileDebugAndroidTest UP-TO-DATE
+> Task :app:checkDebugAndroidTestAarMetadata UP-TO-DATE
+> Task :app:mapDebugAndroidTestSourceSetPaths UP-TO-DATE
+> Task :app:generateDebugAndroidTestResources UP-TO-DATE
+> Task :app:mergeDebugAndroidTestResources UP-TO-DATE
+> Task :app:processDebugAndroidTestManifest UP-TO-DATE
+> Task :app:processDebugAndroidTestResources UP-TO-DATE
+> Task :app:compileDebugAndroidTestJavaWithJavac UP-TO-DATE
+> Task :app:mergeDebugAndroidTestShaders UP-TO-DATE
+> Task :app:compileDebugAndroidTestShaders NO-SOURCE
+> Task :app:generateDebugAndroidTestAssets UP-TO-DATE
+> Task :app:mergeDebugAndroidTestAssets UP-TO-DATE
+> Task :app:compressDebugAndroidTestAssets UP-TO-DATE
+> Task :app:desugarDebugAndroidTestFileDependencies UP-TO-DATE
+> Task :app:dexBuilderDebugAndroidTest UP-TO-DATE
+> Task :app:mergeDebugAndroidTestGlobalSynthetics UP-TO-DATE
+> Task :app:processDebugAndroidTestJavaRes NO-SOURCE
+> Task :app:mergeDebugAndroidTestJavaResource UP-TO-DATE
+> Task :app:checkDebugAndroidTestDuplicateClasses UP-TO-DATE
+> Task :app:mergeExtDexDebugAndroidTest UP-TO-DATE
+> Task :app:mergeLibDexDebugAndroidTest UP-TO-DATE
+> Task :app:mergeProjectDexDebugAndroidTest UP-TO-DATE
+> Task :app:mergeDebugAndroidTestJniLibFolders UP-TO-DATE
+> Task :app:mergeDebugAndroidTestNativeLibs NO-SOURCE
+> Task :app:stripDebugAndroidTestDebugSymbols NO-SOURCE
+> Task :app:validateSigningDebugAndroidTest UP-TO-DATE
+> Task :app:writeDebugAndroidTestSigningConfigVersions UP-TO-DATE
+> Task :app:packageDebugAndroidTest UP-TO-DATE
+> Task :app:createDebugAndroidTestApkListingFileRedirect UP-TO-DATE
+> Task :app:assembleDebugAndroidTest UP-TO-DATE
+
+BUILD SUCCESSFUL in 884ms
+71 actionable tasks: 1 executed, 70 up-to-date
+Performing Streamed Install
+Success
+Performing Streamed Install
+Success
+
+PASS fresh launch shows intro without a saved match
+PASS control exists: New Game
+PASS control enabled: New Game
+PASS control exists: Two players
+PASS control enabled: Two players
+PASS control exists: Choose Player 2
+PASS control enabled: Choose Player 2
+PASS choosing side does not start or overwrite a game
+PASS control exists: Back to welcome
+PASS control enabled: Back to welcome
+PASS control exists: New Game
+PASS control enabled: New Game
+PASS control exists: Two players
+PASS control enabled: Two players
+PASS control exists: Start playing
+PASS control enabled: Start playing
+PASS new game starts chosen player at bottom
+PASS initial seven legal moves
+PASS control exists: Show a legal move hint
+PASS control enabled: Show a legal move hint
+PASS hint selects a legal source and destination
+PASS move changes active player
+PASS control exists: Undo last turn
+PASS control enabled: Undo last turn
+PASS undo restores full initial turn
+PASS control exists: Change piece colors
+PASS control enabled: Change piece colors
+PASS colors screen opens
+PASS control exists: Player 1 color Pink
+PASS control enabled: Player 1 color Pink
+PASS player 1 color updates
+PASS control exists: Player 2 color Orange
+PASS control enabled: Player 2 color Orange
+PASS player 2 color updates
+PASS duplicate opponent color rejected
+PASS control exists: More colors for Player 1
+PASS control enabled: More colors for Player 1
+PASS control exists: Let’s play
+PASS control enabled: Let’s play
+PASS colors preserve game
+PASS control exists: Game rules and settings
+PASS control enabled: Game rules and settings
+PASS standard preset is default
+PASS control exists: Finish every jump chain, on
+PASS control enabled: Finish every jump chain, on
+PASS control exists: Stop when crowned, on
+PASS control enabled: Stop when crowned, on
+PASS control exists: Automatic draws, on
+PASS control enabled: Automatic draws, on
+PASS control exists: Starting player, Player 1
+PASS control enabled: Starting player, Player 1
+PASS remaining rule switches and first player update
+PASS control exists: Use standard American checkers rules
+PASS control enabled: Use standard American checkers rules
+PASS control exists: Use gentle practice rules
+PASS control enabled: Use gentle practice rules
+PASS practice disables forced capture
+PASS rule edits do not affect current game
+PASS control exists: Back to game, discard rule edits
+PASS control enabled: Back to game, discard rule edits
+PASS back discards rule edits
+PASS control exists: Game rules and settings
+PASS control enabled: Game rules and settings
+PASS control exists: Flying kings, off
+PASS control enabled: Flying kings, off
+PASS control exists: Men can jump backward, off
+PASS control enabled: Men can jump backward, off
+PASS control exists: Take the most pieces, off
+PASS control enabled: Take the most pieces, off
+PASS house rule switches update draft
+PASS control exists: Apply rules and start new game
+PASS control enabled: Apply rules and start new game
+PASS new game confirmation shown
+PASS cancel keeps original match
+PASS control exists: Apply rules and start new game
+PASS control enabled: Apply rules and start new game
+PASS confirmation button available
+PASS confirmation applies rules
+PASS new game preserves colors
+PASS control exists: Row 6, column 3, Player 1 piece
+PASS control enabled: Row 6, column 3, Player 1 piece
+PASS control exists: Row 4, column 1, empty
+PASS control enabled: Row 4, column 1, empty
+PASS jump chain holds selection
+PASS control exists: Continue game
+PASS control enabled: Continue game
+PASS unfinished jump survives process-style reload
+PASS control exists: Row 4, column 1, Player 1 piece
+PASS control enabled: Row 4, column 1, Player 1 piece
+PASS control exists: Row 2, column 3, empty
+PASS control enabled: Row 2, column 3, empty
+PASS reloaded chain can finish
+PASS control exists: Undo last turn
+PASS control enabled: Undo last turn
+PASS undo after reload restores entire chain
+PASS control exists: Row 3, column 2, Player 1 piece
+PASS control enabled: Row 3, column 2, Player 1 piece
+PASS control exists: Row 1, column 4, empty
+PASS control enabled: Row 1, column 4, empty
+PASS promotion ends standard turn
+PASS control exists: Row 6, column 3, Player 1 piece
+PASS control enabled: Row 6, column 3, Player 1 piece
+PASS control exists: Row 4, column 1, empty
+PASS control enabled: Row 4, column 1, empty
+PASS winning move displays result
+PASS control exists: Undo last turn
+PASS control enabled: Undo last turn
+PASS undo leaves finished state
+PASS control exists: Continue game
+PASS control enabled: Continue game
+PASS board and turn survive reload
+PASS colors survive reload
+PASS control exists: Back to welcome
+PASS control enabled: Back to welcome
+PASS control exists: New Game
+PASS control enabled: New Game
+PASS control exists: Two players
+PASS control enabled: Two players
+PASS control exists: Choose Player 2
+PASS control enabled: Choose Player 2
+PASS control exists: Start playing
+PASS control enabled: Start playing
+PASS choosing Player 2 preserves the configured starting turn
+PASS opponent turn is named from the selected perspective
+PASS Player 2 renders at bottom
+PASS control exists: Row 3, column 8, Player 1 piece
+PASS control enabled: Row 3, column 8, Player 1 piece
+PASS control exists: Row 4, column 7, empty
+PASS control enabled: Row 4, column 7, empty
+PASS rotated opponent input and your-turn prompt agree
+PASS control exists: Row 6, column 7, Player 2 piece
+PASS control enabled: Row 6, column 7, Player 2 piece
+PASS control exists: Row 5, column 8, empty
+PASS control enabled: Row 5, column 8, empty
+PASS Player 2 moves upward and perspective stays fixed
+PASS control exists: Undo last turn
+PASS control enabled: Undo last turn
+PASS undo preserves perspective
+PASS control exists: Show a legal move hint
+PASS control enabled: Show a legal move hint
+PASS hints work from rotated view
+PASS control exists: Continue game
+PASS control enabled: Continue game
+PASS saved perspective and position survive relaunch
+PASS control exists: Back to welcome
+PASS control enabled: Back to welcome
+PASS control exists: New Game
+PASS control enabled: New Game
+PASS control exists: Two players
+PASS control enabled: Two players
+PASS control exists: Choose Player 1
+PASS control enabled: Choose Player 1
+PASS control exists: Start playing
+PASS control enabled: Start playing
+PASS replacing an active game requires confirmation
+PASS cancel preserves saved perspective and game
+PASS control exists: New Game
+PASS control enabled: New Game
+PASS control exists: Play an alien
+PASS control enabled: Play an alien
+PASS control exists: Choose Bloop, Medium
+PASS control enabled: Choose Bloop, Medium
+PASS select alien 1
+PASS control exists: Choose Ziggy, Tricky
+PASS control enabled: Choose Ziggy, Tricky
+PASS select alien 2
+PASS control exists: Choose Luma, Hard
+PASS control enabled: Choose Luma, Hard
+PASS select alien 3
+PASS control exists: Continue with Luma
+PASS control enabled: Continue with Luma
+PASS control exists: Choose Player 2
+PASS control enabled: Choose Player 2
+PASS control exists: Start playing
+PASS control enabled: Start playing
+PASS alien match stores mode, level and side
+PASS human cannot move during computer turn
+PASS alien plays first when human chooses Player 2
+PASS opening alien move cannot be undone into an endless replay
+PASS alien replies to human move
+PASS control exists: Undo last turn
+PASS control enabled: Undo last turn
+PASS undo restores the human decision before both moves
+PASS control exists: Continue game
+PASS control enabled: Continue game
+PASS opponent mode and level survive reload
+PASS control exists: Game rules and settings
+PASS control enabled: Game rules and settings
+PASS two-person draw agreement is hidden in alien mode
+PASS control exists: Back to game, discard rule edits
+PASS control enabled: Back to game, discard rule edits
+PASS leaving board cancels remaining alien callbacks
+PASS control exists: Continue game
+PASS control enabled: Continue game
+PASS saved computer chain resumes and completes legally
+PASS stale search cannot move in a new two-player game
+PASS control exists: New Game
+PASS control enabled: New Game
+PASS control exists: Two players
+PASS control enabled: Two players
+PASS control exists: Start playing
+PASS control enabled: Start playing
+PASS two-player mode never schedules a computer move
+PASS four initial movable pieces highlighted
+PASS piece follows drag outside board
+PASS drag selects legal destinations
+PASS off-board drop preserves position
+PASS cancelled gesture preserves position
+PASS legal drag commits in either perspective
+PASS tap move has animated original piece
+PASS input blocked during slide
+PASS slide finishes cleanly
+PASS four initial movable pieces highlighted
+PASS piece follows drag outside board
+PASS drag selects legal destinations
+PASS off-board drop preserves position
+PASS cancelled gesture preserves position
+PASS legal drag commits in either perspective
+PASS tap move has animated original piece
+PASS input blocked during slide
+PASS slide finishes cleanly
+PASS undo cancels in-flight animation
+PASS forced capture highlights only capturing piece
+PASS drag capture continues jump chain
+PASS only chain piece stays highlighted
+PASS tap capture retains captured sprite until landing
+PASS mixed drag and tap chain completes
+PASS all four bundled sound assets decode
+PASS SoundPool accepts effect 0
+PASS SoundPool accepts effect 1
+PASS SoundPool accepts effect 2
+PASS SoundPool accepts effect 3
+PASS control exists: Sound effects, on
+PASS control enabled: Sound effects, on
+PASS mute applies without replacing match
+PASS mute and navigation stop current and queued effects
+PASS muted playback stays silent
+PASS control exists: Continue game
+PASS control enabled: Continue game
+PASS mute and match survive activity relaunch
+PASS control exists: Game rules and settings
+PASS control enabled: Game rules and settings
+PASS control exists: Sound effects, off
+PASS control enabled: Sound effects, off
+PASS sound can be enabled again
+PASS control exists: Back to game, discard rule edits
+PASS control enabled: Back to game, discard rule edits
+PASS leaving settings retains immediate sound preference
+
+248 checks passed.
+
+/sdcard/Android/data/com.spacecheckers/files/screenshots/: 18 files pulled, 0 skipped. 122.2 MB/s (24524689 bytes in 0.191s)
