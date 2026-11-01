@@ -1,6 +1,6 @@
 # Space Checkers
 
-Download the Android installer from [GitHub Releases](https://github.com/koganei/space-checkers/releases/latest). This repository is private; sign into your GitHub account on your phone first. Open the release's **Assets**, download the `.apk`, and open it to install. Android may ask you to allow installs from your browser. The current installer is the tested debug-signed build and requires Android 8.0 or newer.
+Download the Android installer from [GitHub Releases](https://github.com/koganei/space-checkers/releases/latest). No GitHub sign-in is needed. Open the release's **Assets**, download the `.apk`, and open it to install. Android may ask you to allow installs from your browser. The current installer is the tested debug-signed build and requires Android 8.0 or newer.
 
 A native, offline Android checkers game for playing against four friendly computer aliens or with another person sharing one device. The Space Play concept is the visual reference. The app includes a game board, independent player colors, legal-move hints, complete-turn undo, saved games, and a rules page.
 
