@@ -4,6 +4,18 @@ Download the Android installer from [GitHub Releases](https://github.com/koganei
 
 A native, offline Android checkers game for playing against four friendly computer aliens or with another person sharing one device. The Space Play concept is the visual reference. The app includes a game board, independent player colors, legal-move hints, complete-turn undo, saved games, and a rules page.
 
+## Screenshots
+
+Tap a screenshot to view it full size.
+
+| Welcome | Meet the aliens | Play a game |
+| :---: | :---: | :---: |
+| <a href="artifacts/screenshots/00-welcome.png"><img src="artifacts/screenshots/00-welcome.png" alt="Space Checkers welcome screen with New Game and Continue" width="240"></a> | <a href="artifacts/screenshots/12-alien-picker.png"><img src="artifacts/screenshots/12-alien-picker.png" alt="Pip, Bloop, Ziggy and Luma with their difficulty levels" width="240"></a> | <a href="artifacts/screenshots/14-alien-game.png"><img src="artifacts/screenshots/14-alien-game.png" alt="Space-themed checkerboard during a game against Luma" width="240"></a> |
+
+| Choose your colors | Sounds and rules | Play again |
+| :---: | :---: | :---: |
+| <a href="artifacts/screenshots/02-colors.png"><img src="artifacts/screenshots/02-colors.png" alt="Independent color palettes for both players" width="240"></a> | <a href="artifacts/screenshots/17-sound-settings.png"><img src="artifacts/screenshots/17-sound-settings.png" alt="Sound effects toggle and configurable checkers rules" width="240"></a> | <a href="artifacts/screenshots/18-result-win.png"><img src="artifacts/screenshots/18-result-win.png" alt="Win popup with Play again and Back to home buttons" width="240"></a> |
+
 ## Install
 
 Copy `artifacts/space-checkers-debug.apk` to an Android phone or tablet and open it. Android may ask you to allow installation from the app opening the file. This is a debug-signed APK for direct testing, not a Play Store release. Android 8.0 (API 26) or later is required.
